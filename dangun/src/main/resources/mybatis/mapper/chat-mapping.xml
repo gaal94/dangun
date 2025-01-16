@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.example.dangun.DAO.ChatMapper">
+
+<select id="getRoomById"  resultType="String"  parameterType="int">
+	SELECT room_id FROM CHAT_ROOM 
+	WHERE SELLER_ID = ${id} AND WANNER_ID = ${userId}
+</select>
+
+<insert id="createRoom" parameterType="chatRoomDTO">
+	INSERT INTO CHAT_ROOM VALUES(#{roomId}, #{sellerId}, #{wannerId})
+</insert>
+
+<select id="getMsgByRoomId" resultType="map"  parameterType="String">
+	SELECT 
+	(SELECT NAME FROM USERS WHERE ID = SENDER) AS SENDER,
+	 MSG, TO_CHAR(TIMESTAMP, 'YYYY-MM-DD HH24:MI:SS') AS TIMESTAMP
+	 FROM CHAT_MSG WHERE ROOM_ID = #{roomId}
+</select>
+
+<insert id="addMsgByRoom" parameterType="chatMsgDTO">
+	INSERT INTO CHAT_MSG(ROOM_ID, SENDER, MSG)
+	VALUES(#{roomId}, #{sender}, #{message})
+</insert>
+</mapper>
