@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+ 
+<mapper namespace="com.example.dangun.DAO.ItemMapper"> <!-- 수정된 부분 -->
+<!--  <insert id="insertBoard" parameterType="itemdto" > 
+  insert into board values( (select max(seq) + 1 from board), #{title}, #{contents}, #{writer}, #{pw}, 0, sysdate, 
+  #{file1, jdbcType=VARCHAR})
+ </insert> -->
+ 
+<!--  20개씩 끊어서 보내기 -->
+ <select id="getAllItemList" resultType="ItemDTO">
+  SELECT * FROM ITEMS
+</select>
+
+<select id="getItemDetail" resultType="itemSaleDTO" parameterType="integer">
+  SELECT 
+      a.ID, 
+      a.TITLE, 
+      a.PRICE, 
+      a.COUNTRY, 
+      a.CONTENTS, 
+      a.CATEGORY, 
+      a.IMG_SRC, 
+      a.WRITE_DATE,
+      a.USER_PK,
+      (
+      	SELECT USER_ID FROM USERS WHERE ID = a.USER_PK
+      ) AS USER_NAME,
+      b.IS_SALE, 
+      b.STAR 
+  FROM ITEMS a 
+  LEFT OUTER JOIN ITEM_SALE b 
+  ON a.ID = b.ITEM_ID  
+  WHERE a.ID = #{id} 
+</select>
+
+<update id="endOfDeal" parameterType="int">
+	UPDATE ITEM_SALE
+	SET IS_SALE = 1
+	WHERE ITEM_ID = #{itemId} AND USER_PK = #{userId}
+</update>
+
+<update id="evaluateDeal" parameterType="itemSaleDTO">
+	UPDATE ITEM_SALE
+	SET STAR = #{star}
+	WHERE ITEM_ID = #{id}
+</update>
+
+<!-- <select id="getBoardBySeq" resultType="boarddto" parameterType="integer">
+	SELECT * FROM BOARD WHERE SEQ = ${seq}
+</select> -->
+
+
+
+
+ </mapper> 
+  

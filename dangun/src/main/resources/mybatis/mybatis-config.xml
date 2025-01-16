@@ -3,8 +3,15 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 
 <configuration>
-
+<settings>
+        <setting name="mapUnderscoreToCamelCase" value="true"/>
+    </settings>
 <typeAliases>
+	<typeAlias type="com.example.dangun.DTO.ItemDTO" alias="ItemDTO"/>
+	<typeAlias type="com.example.dangun.DTO.UserDTO" alias="userDTO"/>
+	<typeAlias type="com.example.dangun.DTO.ItemSaleDTO" alias="itemSaleDTO"/>
+	<typeAlias type="com.example.dangun.DTO.ChatRoomDTO" alias="chatRoomDTO"/>
+	<typeAlias type="com.example.dangun.DTO.ChatMsgDTO" alias="chatMsgDTO"/>
 </typeAliases>
 
 
