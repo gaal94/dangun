@@ -1,6 +1,8 @@
 package com.example.dangun.Controller;
 
+import java.io.IOException;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -11,6 +13,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.example.dangun.DTO.ItemDTO;
 import com.example.dangun.DTO.ItemSaleDTO;
@@ -63,4 +67,34 @@ public class ItemController {
 	    }
     	return ResponseEntity.ok().body(null);
     }
+    
+    //중고 물품 등록 기능(아직 유저 정보랑은 연결 안됨)
+    @PostMapping("/item/write")
+    @ResponseBody
+    public void insertItem(String title, int price, String country, String contents, String category, String img_src, MultipartFile multifile) throws IOException {
+    	ItemDTO dto = new ItemDTO();
+		dto.setTitle(title);
+		dto.setPrice(price);
+		dto.setCountry(country);
+		dto.setContents(contents);
+		dto.setCategory(category);
+		String savePath = "c:/ezwel/upload/";
+		String newfilename = null;
+		if(!multifile.isEmpty()) {
+			String originalfilename = multifile.getOriginalFilename();
+			String before = originalfilename.substring(0, originalfilename.indexOf("."));
+			String ext = originalfilename.substring(originalfilename.indexOf("."));
+			newfilename = before + "(" + UUID.randomUUID() + ")" + ext;
+			multifile.transferTo(new java.io.File(savePath + newfilename));
+		}
+		dto.setImgSrc(newfilename);
+		itemService.insertItem(dto);
+    }
+    
+    //물품 카테고리만 가져오는 기능(물품 등록 화면에 필요함)
+    @GetMapping("/item/category")
+    @ResponseBody
+	ArrayList<String> getAllCategory() {
+		return itemService.getAllCategory();
+	}
 }

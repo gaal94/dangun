@@ -9,6 +9,7 @@ import Main from './Components/MainComponent';
 import Login from "./Components/LoginComponent";
 import Join from "./Components/JoinComponent";
 import JoinNext from "./Components/JoinNextComponent";
+import ItemWriteComponent from './Components/ItemWriteCompoenet.js';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
          <Route path="/login" element={<Login />} />
          <Route path="/join" element={<Join />} />
          <Route path="/join/joinnext" element={<JoinNext />} />
+          <Route path='/item/write' element={<ItemWriteComponent />} />
         </Routes>
       </BrowserRouter>
     </div>

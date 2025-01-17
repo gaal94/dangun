@@ -49,6 +49,24 @@
 	WHERE ITEM_ID = #{id}
 </update>
 
+<!-- 유저pk 들어가야 함 -->
+<insert id="insertItem" parameterType="ItemDTO">
+	insert into items
+	(id, title, price, country, contents, category, img_src)
+	values(
+		(select max(id) + 1 from items),
+		#{title},
+		#{price},
+		#{country},
+		#{contents},
+		#{category},
+		#{imgSrc}
+	)
+</insert>
+
+<select id="getAllCategory" resultType="String">
+	select category from items group by category
+</select>
 <!-- <select id="getBoardBySeq" resultType="boarddto" parameterType="integer">
 	SELECT * FROM BOARD WHERE SEQ = ${seq}
 </select> -->

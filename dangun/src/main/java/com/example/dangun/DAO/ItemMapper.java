@@ -19,4 +19,8 @@ public interface ItemMapper {
 	void endOfDeal(int userId, int itemId);
 	
 	void evaluateDeal(ItemSaleDTO dto);
+	
+	int insertItem(ItemDTO dto);
+	
+	ArrayList<String> getAllCategory();
 }

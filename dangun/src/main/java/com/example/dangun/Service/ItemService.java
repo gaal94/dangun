@@ -42,4 +42,18 @@ public class ItemService {
 			return false;
 		}
 	}
+
+	public boolean insertItem(ItemDTO dto) {
+		try {
+			itemMapper.insertItem(dto);
+			return true;
+		}catch(Exception e) {
+			System.out.println(e);
+			return false;
+		}
+	}
+		
+	public ArrayList<String> getAllCategory() {
+		return itemMapper.getAllCategory();
+	}
 }
