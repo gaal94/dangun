@@ -42,6 +42,17 @@ public class ItemController {
 		return ResponseEntity.ok().body(dto);
 	}
 	
+	@GetMapping("/item/my-list")
+	public ResponseEntity getMyItemList(HttpServletRequest request) {
+		HttpSession session = request.getSession();
+		Integer userId = (Integer) session.getAttribute("user");
+	    if (userId == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+	    }
+	    ArrayList<ItemDTO> dto = itemService.getAllMyItems(userId);
+	    return ResponseEntity.ok().body(dto);
+	}
+	
     @PostMapping("/item/deal-over")
     public ResponseEntity endOfDealItem(HttpServletRequest request, @RequestBody ItemSaleDTO dto) {
     	 HttpSession session = request.getSession();

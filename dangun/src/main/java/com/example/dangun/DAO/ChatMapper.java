@@ -19,4 +19,6 @@ public interface ChatMapper {
 	ArrayList<ChatMsgDTO> getMsgByRoomId(String roomId);
 	
 	void addMsgByRoom(ChatMsgDTO dto);
+	
+	ArrayList<ChatRoomDTO> getAllChatByItem(int id, int userId);
 }

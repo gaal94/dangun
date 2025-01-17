@@ -38,9 +38,10 @@ public class ChatController {
 	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
 	    }
     	String roomId = chatService.chatManage(dto, userId);
+    	if(roomId.equals("same"))return ResponseEntity.badRequest().body("SAME");
     	HashMap<String, Integer> body = new HashMap<String,Integer>();
     	body.put(roomId, userId);
-       return ResponseEntity.ok().body(body );
+       return ResponseEntity.ok().body(body);
     }
     
     @GetMapping("/chat/get-msg/{room_id}")
@@ -54,7 +55,17 @@ public class ChatController {
     	if(!chatService.addMsgByRoom(dto)) {
     		return ResponseEntity.badRequest().body("can't push messages");
     	}
-    	
     	return ResponseEntity.ok().body(null);
+    }
+    
+    @GetMapping("/chat/get-chat/{itemId}")
+    public ResponseEntity getChatByItem(HttpServletRequest request, @PathVariable("itemId") int id) {
+    	HttpSession session = request.getSession();
+   	 	Integer userId = (Integer) session.getAttribute("user");
+	    if (userId == null) {
+	        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("User not logged in");
+	    }
+    	ArrayList<ChatRoomDTO> chatRooms = chatService.getAllChatByItem(id, userId);
+    	return ResponseEntity.ok().body(chatRooms);
     }
 }

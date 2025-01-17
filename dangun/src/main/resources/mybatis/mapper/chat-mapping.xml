@@ -10,9 +10,9 @@
 </select>
 
 <insert id="createRoom" parameterType="chatRoomDTO">
-	INSERT INTO CHAT_ROOM VALUES(#{roomId}, #{sellerId}, #{wannerId})
+    INSERT INTO CHAT_ROOM (ROOM_ID, SELLER_ID, WANNER_ID, ITEM_ID)
+    VALUES (#{roomId}, #{sellerId}, #{wannerId}, #{itemId})
 </insert>
-
 <select id="getMsgByRoomId" resultType="map"  parameterType="String">
 	SELECT 
 	(SELECT NAME FROM USERS WHERE ID = SENDER) AS SENDER,
@@ -24,4 +24,10 @@
 	INSERT INTO CHAT_MSG(ROOM_ID, SENDER, MSG)
 	VALUES(#{roomId}, #{sender}, #{message})
 </insert>
+<select id ="getAllChatByItem" resultType="chatRoomDTO" parameterType="int">
+	SELECT * FROM CHAT_ROOM WHERE ITEM_ID = #{id} AND SELLER_ID = #{userId}
+</select>
+<!-- <select id="getRoomsById" resultType="chatRoomDTO" parameterType="int">
+	SELECT ROOM_ID FROM 
+</select> -->
 </mapper>

@@ -11,54 +11,50 @@ const ItemListComponent = ( ) => {
 
 
     useEffect(() => {
-        axios.get(
-            "http://localhost:9090/item/list").then((res)=>{
-                setItemList(res.data);
-                timeCulFunc(res.data.writeDate);
-            }).catch((error) => {console.log("ERROR : ", error)});
+        axios.get("http://localhost:9090/item/list").then((res)=>{
+            console.log(res.data);
+            setItemList(res.data);
+        }).catch((error) => {console.log("ERROR : ", error)});
 
     },[]);
 
-    return (        
-        <>
-        {/* Header  */}
-        <div className="header">
-        <Header />
-        </div>
-        <div className="box_container">
-            <div className="box_item box_list">
-                <div>
-                    <table>
-                        <tr>
-                            <th>품명</th><th>가격</th><th>지역</th><th>카테고리</th>
-                        </tr>
-                        {
-                            itemList && itemList.length > 0 ? (
-                                itemList.map(item => (
-                                    <tr key={item.id}>
-                                        <td><a href={`/item/detail/${item.id}`}>{item.title}</a></td>
-                                        <td>{item.price}</td>
-                                        <td>{item.country}</td>
-                                        <td>{item.category}</td>
-                                        <td>{timeCulFunc(item.writeDate)}</td>
+    return (   
+        <div>
+            <div className="header">
+                <Header />
+            </div >
+            <div className="item_list_container">
+                <div className="box_item box_list">
+                    <div>
+                        <table>
+                            <tr>
+                                <th>품명</th><th>가격</th><th>지역</th><th>카테고리</th>
+                            </tr>
+                            {
+                                itemList && itemList.length > 0 ? (
+                                    itemList.map(item => (
+                                        <tr key={item.id}>
+                                            <td><a href={`/item/detail/${item.id}`}>{item.title}</a></td>
+                                            <td>{item.price}</td>
+                                            <td>{item.country}</td>
+                                            <td>{item.category}</td>
+                                            <td>{timeCulFunc(item.writeDate)}</td>
+                                        </tr>
+                                    ))
+                                ) : (
+                                    <tr>
+                                        <td colSpan="4">아이템이 없습니다.</td>
                                     </tr>
-                                ))
-                            ) : (
-                                <tr>
-                                    <td colSpan="4">아이템이 없습니다.</td>
-                                </tr>
-                            )
-                        }
-                    </table>
+                                )
+                            }
+                        </table>
+                    </div>
                 </div>
+                <div>
+                <Footer /> 
+                </div>       
             </div>
-        </div>
-
-        {/* Footer */}
-      <div className="footer">
-        <Footer />        
-      </div>
-    </>
+        </div>     
     )
 }
 

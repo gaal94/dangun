@@ -11,6 +11,7 @@ import Join from "./Components/JoinComponent";
 import JoinNext from "./Components/JoinNextComponent";
 import ItemWriteComponent from './Components/ItemWriteCompoenet.js';
 
+import ListViewComponent from"./Components/ListViewComponent";
 function App() {
   return (
     <div className="App">
@@ -25,6 +26,7 @@ function App() {
          <Route path="/join" element={<Join />} />
          <Route path="/join/joinnext" element={<JoinNext />} />
           <Route path='/item/write' element={<ItemWriteComponent />} />
+         <Route path="/my/list" element={<ListViewComponent />} />
         </Routes>
       </BrowserRouter>
     </div>

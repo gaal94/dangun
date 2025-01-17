@@ -43,6 +43,7 @@ public class ItemService {
 		}
 	}
 
+
 	public boolean insertItem(ItemDTO dto) {
 		try {
 			itemMapper.insertItem(dto);
@@ -56,4 +57,14 @@ public class ItemService {
 	public ArrayList<String> getAllCategory() {
 		return itemMapper.getAllCategory();
 	}
+	
+	public ArrayList<ItemDTO> getAllMyItems(int userId) {
+		try {
+			return itemMapper.getAllMyItems(userId);
+		}catch(Exception e) {
+			System.out.println(e);
+			return null;
+		}
+	}
+	
 }

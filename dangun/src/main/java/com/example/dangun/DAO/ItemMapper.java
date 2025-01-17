@@ -23,4 +23,7 @@ public interface ItemMapper {
 	int insertItem(ItemDTO dto);
 	
 	ArrayList<String> getAllCategory();
+
+	ArrayList<ItemDTO> getAllMyItems(int userId);
+
 }

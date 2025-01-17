@@ -24,7 +24,6 @@ const Main = () => {
       <div className="header">
         <Header userId={userId}/>
       </div>
-
       {/* Main */}
       <div className="main_box_container">
         

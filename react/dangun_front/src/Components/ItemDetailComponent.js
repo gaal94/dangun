@@ -17,7 +17,7 @@ const ItemDetailComponent = () => {
   const openChatFunc = async (sellerId) => {
     try{
         const responseData = await axios.post("http://localhost:9090/chat/manage", {
-            sellerId
+            sellerId, itemId : item_id
         },{
             withCredentials: true,  // 쿠키 포함을 위해 이 옵션을 설정
           });
@@ -29,8 +29,9 @@ const ItemDetailComponent = () => {
         }
 
     }catch(err){
-      if(err.status == 401) alert("로그인하세요");
-        console.log(err);
+      if(err.status == 400) alert("판매자입니다.");
+      else if(err.status == 401) alert("로그인하세요");
+      console.log(err);
     }
 }
 
