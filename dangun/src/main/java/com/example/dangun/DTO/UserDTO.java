@@ -7,7 +7,8 @@ public class UserDTO {
     private String name;
     private String email;
     private String phone;
-
+    private String country;
+    
     // Getter and Setter for id
     public int getId() {
         return id;
@@ -61,4 +62,12 @@ public class UserDTO {
     public void setPhone(String phone) {
         this.phone = phone;
     }
+
+	public String getCountry() {
+		return country;
+	}
+
+	public void setCountry(String country) {
+		this.country = country;
+	}
 }

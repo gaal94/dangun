@@ -24,6 +24,16 @@ public class UserService {
 		}
 	}
 	
+	public void sign(UserDTO dto) {
+		try {
+			int id = userMapper.findCreateId();
+			dto.setId(id+1);
+			userMapper.create(dto);
+		}catch(Exception e) {
+			System.out.println(e);
+		}
+	}
+	
 	public UserDTO login(UserDTO dto) {
 		if(dto.getUserId() == null || dto.getPw() == null) {
 			return null;

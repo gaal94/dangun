@@ -79,3 +79,17 @@ table:focus-within
   margin: 30px 0px;
   cursor: pointer;
 }
+
+.btn_pw_check
+{
+  border: 1px solid lightgray;
+  border-radius: 10px;  
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+  background-color: white;
+  padding: 5px 10px;
+  margin-right: 313px;
+  margin-top: 5px;
+  cursor: pointer;
+}

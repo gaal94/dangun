@@ -28,13 +28,13 @@ const Header = (props) =>{
         <div className="headermenu">
           <div className="banner">카테고리</div>
           <div className="banner-content">
-            <a href="#">디지털기기</a>
-            <a href="#">생활가전</a>
-            <a href="#">가구/인테리어</a>
-            <a href="#">생활/주방</a>
-            <a href="#">유아동</a>
-            <a href="#">유아도서</a>
-            <a href="#">여성의류</a>
+            <a href="#">가전 제품</a>
+            <a href="#">의류</a>
+            <a href="#">뷰티</a>
+            <a href="#">가구</a>
+            <a href="#">식품</a>
+            <a href="#">유아제품</a>
+            <a href="#">기타 중고 제품</a>
           </div>
         </div>
         <div className="headermenu">

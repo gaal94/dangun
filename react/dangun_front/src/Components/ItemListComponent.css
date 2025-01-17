@@ -1,0 +1,48 @@
+.box_container 
+{
+    width: 1080px;
+    margin: auto;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(30, 1fr);
+}
+
+.box_item 
+{
+    text-align: center;
+}
+
+.box_list
+{
+    grid-column: 1 / 4;
+    grid-row: 3 / 4;
+    
+  
+  border: 1px solid black;
+}
+
+.box_list table 
+{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.box_list th, .box_list td 
+{
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.box_list th 
+{
+    background-color: #f2f2f2;
+    text-align: center;
+    font-size: 15px;
+}
+
+.box_list td
+{
+    text-align: left;
+    font-size: 13px;
+}

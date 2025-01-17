@@ -10,4 +10,17 @@ SELECT * FROM USERS WHERE ID = #{id}
 <select id="getByUserId" resultType="userDTO" parameterType="string">
 SELECT * FROM USERS WHERE USER_ID = #{userId}
 </select>
+
+<select id="findCreateId" resultType="int">
+	SELECT COUNT(*) FROM USERS
+</select>
+
+
+<insert id="create" parameterType="userDTO">
+    <!-- 그 값을 INSERT에 사용 -->
+    INSERT INTO USERS VALUES (
+        #{id}, #{userId}, 
+        #{pw}, #{name}, #{country}, #{email}, #{phone}
+    )
+</insert>
 </mapper>
