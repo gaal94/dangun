@@ -2,39 +2,27 @@ import React, { useState } from 'react';
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import './LoginComponent.css';
-
+import axios from 'axios';
 function Login() 
 {
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("");
+  const [pw, setPw] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleLogin = async () => 
   {
     try 
     {
-      const response = await fetch("http://localhost:9090/login/authenticate", 
-        {
-        method: "POST",
-        headers: 
-        {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          username: username,
-          password: password,
-        }),
-      });
-
-      if (response.ok) 
+      const response = await axios.post("http://localhost:9090/login", 
+        { userId, pw}, {withCredentials : true});
+      if (response.status == 200) 
       {
         setErrorMessage("로그인성공");
-        window.location.href = "/home";
+        window.location.href = "/";
       } 
       else 
       {
-        const data = await response.json();
-        setErrorMessage(data.message || "로그인 실패");
+        setErrorMessage("로그인 실패");
       }
     } 
     catch (error) 
@@ -62,8 +50,8 @@ function Login()
                     type="text"
                     className="input_id"
                     placeholder="아이디"
-                    value={username}
-                    onChange={(e) => setUsername(e.target.value)}/>
+                    value={userId}
+                    onChange={(e) => setUserId(e.target.value)}/>
                 </td>
               </tr>
             </table>
@@ -74,8 +62,8 @@ function Login()
                     type="password"
                     className="input_pw"
                     placeholder="비밀번호"
-                    value={password}
-                    onChange={(e) => setPassword(e.target.value)}/>
+                    value={pw}
+                    onChange={(e) => setPw(e.target.value)}/>
                 </td>
               </tr>
             </table>

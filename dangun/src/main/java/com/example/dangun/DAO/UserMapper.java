@@ -8,5 +8,7 @@ import com.example.dangun.DTO.UserDTO;
 @Repository
 @Mapper
 public interface UserMapper {
-	UserDTO getById(int userId);
+	UserDTO getById(int id);
+	
+	UserDTO getByUserId(String userId);
 }

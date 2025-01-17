@@ -4,6 +4,10 @@
  
 <mapper namespace="com.example.dangun.DAO.UserMapper">
 <select id="getById" resultType="userDTO" parameterType="int">
-SELECT * FROM USERS WHERE id = ${userId}
+SELECT * FROM USERS WHERE ID = #{id}
+</select>
+
+<select id="getByUserId" resultType="userDTO" parameterType="string">
+SELECT * FROM USERS WHERE USER_ID = #{userId}
 </select>
 </mapper>

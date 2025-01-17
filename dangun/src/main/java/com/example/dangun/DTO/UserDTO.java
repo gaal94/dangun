@@ -18,11 +18,11 @@ public class UserDTO {
     }
 
     // Getter and Setter for userid
-    public String getUserid() {
+    public String getUserId() {
         return userId;
     }
 
-    public void setUserid(String userId) {
+    public void setUserId(String userId) {
         this.userId = userId;
     }
 

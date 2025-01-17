@@ -1,16 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from "./HeaderComponent";
 import Footer from "./FooterComponent";
 import './MainComponent.css';
 import Slider from "./SliderComponent";
+import axios from "axios";
+const Main = () => {
 
-function Main() 
-{
+  const [userId, setUserId] = useState("");
+
+  useEffect(()=> {
+    axios.post("http://localhost:9090/auth-check", {}, {withCredentials : true}).then((res) => {
+      if(res.data != "Forbidden Error"){
+        setUserId(res.data);
+      }else{
+        setUserId("");
+      }
+    }).catch((err) => console.log(err));
+  }, [])
+
   return (
     <>
       {/* Header */}
       <div className="header">
-        <Header />
+        <Header userId={userId}/>
       </div>
 
       {/* Main */}
@@ -73,49 +85,49 @@ function Main()
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_02.jpg`}
               alt="디지털기기 아이콘 이미지"
             />
-            가전제품
+            디지털기기
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_03.jpg`}
               alt="생활가전 아이콘 이미지"
             />
-            의류
+            생활가전
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_04.jpg`}
               alt="가구/인테리어 아이콘 이미지"
             />
-            뷰티
+            가구/인테리어
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_05.jpg`}
               alt="생활/주방 아이콘 이미지"
             />
-            가구
+            생활/주방
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_06.jpg`}
               alt="유아동 아이콘 이미지"
             />
-            식품
+            유아동
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_07.jpg`}
               alt="유아도서 아이콘 이미지"
             />
-            유아제품
+            유아도서
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_08.jpg`}
               alt="여성의류 아이콘 이미지"
             />
-            기타중고제품
+            여성의류
           </button>
         </div>
       </div>
@@ -126,6 +138,7 @@ function Main()
       </div>
     </>
   );
-}
+} 
+
 
 export default Main;
