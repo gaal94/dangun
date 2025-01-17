@@ -11,7 +11,7 @@ const ItemDetailComponent = () => {
   ;
   useEffect(() => {
     axios.get(
-        `http://localhost:9090/item/detail/${item_id}`).then((res)=>{setItemDetail(res.data)}).catch((error) => {console.log("ERROR : ", error)});
+        `http://localhost:9090/item/detail/${item_id}`).then((res)=>{setItemDetail(res.data); console.log(res.data)}).catch((error) => {console.log("ERROR : ", error)});
     },[]);
 
   const openChatFunc = async (sellerId) => {
@@ -37,21 +37,22 @@ const ItemDetailComponent = () => {
   return (
       <div>
           {
-              itemDetail?
-                  <div>
-                    <div>카테고리 : {itemDetail.category}</div>
-                    {itemDetail.imgSrc? <img src={itemDetail.imgSrc}/> : <img src="/nothing.png"/>}
-                    <div>품명 : {itemDetail.title}</div>
-                    <div>판매자 : {itemDetail.userName}</div>
-                    <div>희망 판매 가격 : {itemDetail.price}</div>
-                    <div>희망 판매 위치 : {itemDetail.country}</div>
-                    <div>{timeCulFunc(itemDetail.writeDate)}</div>
-                  </div>
-                : 
-                <div>Loading...</div> /* 데이터가 없으면 로딩 중 메시지 */
-            
+            itemDetail? (
+              <div>
+                <div>카테고리 : {itemDetail.category}</div>
+                {itemDetail.imgSrc? <img src={itemDetail.imgSrc}/> : <img src="/nothing.png"/>}
+                <div>품명 : {itemDetail.title}</div>
+                <div>판매자 : {itemDetail.userName}</div>
+                <div>희망 판매 가격 : {itemDetail.price}</div>
+                <div>희망 판매 위치 : {itemDetail.country}</div>
+                <div>{timeCulFunc(itemDetail.writeDate)}</div>
+                <div>판매자 평점 : {itemDetail.star}</div>
+                {itemDetail.sale?(
+                  <div>판매가 종료된 상품입니다.</div>
+                ):<button onClick={()=> openChatFunc(itemDetail.userPk)}>채팅하기</button>
+              }</div>
+            ) : <div>Loading...</div> /* 데이터가 없으면 로딩 중 메시지 */
           }
-          <button onClick={()=> openChatFunc(itemDetail.userPk)}>채팅하기</button>
       </div>
   )
 }
