@@ -5,6 +5,8 @@ import ItemListComponent from './Components/ItemLIstComponent';
 import ItemDetailComponent from './Components/ItemDetailComponent';
 import ChatRoomComponent from './Components/ChatRoomComponent.js';
 import DealCompleteComponent from './Components/DealCompleteComponent.js';
+import Main from './Components/MainComponent';
+import Login from "./Components/LoginComponent";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
           <Route path='/item/detail/:item_id' element={<ItemDetailComponent/>}></Route>
           <Route path='/chatroom/:roomId/:sender/:itemId' element={<ChatRoomComponent/>}></Route>
           <Route path='/item/complete/:itemId' element={<DealCompleteComponent/>}></Route>
+          <Route path="/" element={<Main />} />
+         <Route path="/login" element={<Login />} />
         </Routes>
       </BrowserRouter>
     </div>

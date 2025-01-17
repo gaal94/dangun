@@ -1,0 +1,22 @@
+.footer
+{
+	border-top: 1px solid lightgray;
+}
+
+.footer table
+{
+	margin: 20px;
+	margin-left: 400px;
+	
+	font-size: 12px;
+	font-weight: 800;	
+	white-space: nowrap;
+}
+
+.footer a
+{
+	color: black;
+	text-decoration: none;
+	white-space: nowrap;
+	margin-right:10px;
+}

@@ -1,0 +1,153 @@
+.main_box_container 
+{
+	width: 1080px;
+	margin: auto;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(24, 40px);
+}
+
+.main_box_item 
+{
+	text-align: center;
+}
+
+.main_box_search 
+{
+	grid-column: 1 / 4;
+	grid-row: 3 / 5;
+  
+	display: flex;
+	align-items: center;
+	border: 1px solid #ccc;
+	padding: 5px;
+	width: 1065px;
+	height:30px;
+	border-radius:5px;
+	z-index: 9999;
+}
+
+.main_box_suggest
+{
+	grid-column: 1 / 2;
+	grid-row: 4 / 5;
+	
+	align-items: center;
+	padding: 7px;
+	
+	font-size: 14px;
+	font-weight: 800;
+	z-index: 9999;
+}
+
+.main_box_category_text
+{
+	grid-column: 1 / 4;
+	grid-row: 17 / 19;
+		
+	margin-top: 30px;
+	padding: 5px;
+	
+	text-align: left !important;
+	font-size: 25px;
+	font-weight: 800;
+}
+
+.main_box_category
+{
+	grid-column: 1 / 2;
+	grid-row: 19 / 25;
+	
+	
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+}
+
+.main_search_input 
+{
+	border: none;
+	outline: none;
+	width: 1050px;
+	height: 20px;
+	margin-left: 5px;
+	font-size: 16px;
+}
+        
+.main_search_input::placeholder 
+{
+	color: gray;
+}
+		
+.main_search_button 
+{
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	margin-left: 10px;
+}
+
+.main_search_button img 
+{
+	width: 20px;
+	height: 20px;
+}
+		
+.main_location_button 
+{
+	background-color: white;
+	border: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.main_location_button img 
+{
+	width: 20px;
+	height: 25px;
+}
+
+.main_box_suggest a
+{
+	margin-left: 10px;
+	font-weight: 600;
+	color: #ccc;
+	text-decoration: none;	
+	cursor: pointer;
+}
+
+.main_category_btn 
+{
+	background-color: transparent;
+	border: none;
+	padding: 10px;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+	transition: background-color 0.3s ease;
+		
+	font-size: 14px;
+	font-weight: 900;
+}
+				
+.main_category_btn img 
+{
+	width: 120px;
+	height: 120px;
+	object-fit: cover;
+	margin-bottom: 10px;
+	transition: transform 0.3s ease;
+}
+
+.main_category_btn:hover img 
+{
+    transform: scale(1.2);
+}

@@ -1,0 +1,94 @@
+.box_container 
+{
+  width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(32, 1fr);
+}
+
+.box_item 
+{
+  text-align: center;
+}
+
+.box_login 
+{
+  grid-column: 2 / 3;
+  grid-row: 7 / 28;
+  
+  border: 1px solid #dee3eb;
+  border-radius: 10px;
+  margin: 0px -60px;
+}
+
+.box_btns 
+{
+  grid-column: 2 / 3;
+  grid-row: 29 / 30;
+}
+
+.login table
+{
+	border: 1px solid lightgray;
+  margin-left: 25px;
+  padding: 5px 0px;
+  padding-right: 155px;
+}
+
+.login_id
+{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 100px;
+}
+
+.login_pw
+{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: -1px;
+}
+
+table:focus-within 
+{ 
+  position: relative;
+  z-index: 10; 
+  border-color: #FF3636;
+}
+
+.input_id, .input_pw 
+{
+	border: none;
+	outline: none;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.login_button
+{
+  border: none;
+  border-radius: 10px;  
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #eb3333;
+  padding: 10px 180px;
+  margin-top: 40px;
+  cursor: pointer;
+}
+
+.box_btns a
+{
+	font-size:13px;
+	color: black;
+	text-decoration: none;
+	white-space: nowrap;
+  padding:0px 25px;
+}
+
+.box_btns #box_btns_center
+{
+	border-left: 1px solid lightgray;
+	border-right: 1px solid lightgray;
+}
