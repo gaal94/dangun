@@ -37,6 +37,17 @@ public class UserController {
 		}
 	}
 	
+	@PostMapping("/sign")
+	public ResponseEntity sign(@RequestBody UserDTO dto) {
+		try {
+	
+			userService.sign(dto);
+			return ResponseEntity.ok().body(null);
+		}catch(Exception e) {
+			return ResponseEntity.badRequest().body("잘못된 입력입니다.");
+		}
+	}
+	
 	@PostMapping("/auth-check")
 	public ResponseEntity getSession(HttpServletRequest request) {
 		HttpSession session = request.getSession();

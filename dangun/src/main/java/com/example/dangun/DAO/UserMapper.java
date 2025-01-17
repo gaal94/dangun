@@ -11,4 +11,8 @@ public interface UserMapper {
 	UserDTO getById(int id);
 	
 	UserDTO getByUserId(String userId);
+	
+	void create(UserDTO dto);
+	
+	int findCreateId();
 }
