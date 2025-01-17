@@ -1,0 +1,81 @@
+.box_container 
+{
+  width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(32, 1fr);
+}
+
+.box_item 
+{
+  text-align: center;
+}
+
+.box_join
+{
+  grid-column: 2 / 3;
+  grid-row: 5 / 32;
+
+  font-size: 20px;
+  
+  border: 1px solid #dee3eb;
+  border-radius: 10px;
+  margin: 0px -60px;
+}
+
+.join table
+{
+	border: 1px solid lightgray;
+  margin-left: 25px;
+  padding: 5px 0px;
+  padding-right: 155px;
+}
+
+.join_id, .join_name
+{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  margin-top: 30px;
+}
+
+.join_pw, .join_location, .join_email
+{
+  margin-top: -1px;
+}
+
+.join_pw_check, .join_phone
+{
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  margin-top: -1px;
+}
+
+table:focus-within 
+{ 
+  position: relative;
+  z-index: 10; 
+  border-color: #FF3636;
+}
+
+.join_input_id, .join_input_pw, .join_input_pw_check,
+.join_input_name , .join_input_location , .join_input_email, .join_input_phone 
+{
+	border: none;
+	outline: none;
+	font-size: 20px;
+	padding: 10px;
+}
+
+.join_button
+{
+  border: none;
+  border-radius: 10px;  
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #eb3333;
+  padding: 10px 180px;
+  margin: 30px 0px;
+  cursor: pointer;
+}

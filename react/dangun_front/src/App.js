@@ -7,6 +7,8 @@ import ChatRoomComponent from './Components/ChatRoomComponent.js';
 import DealCompleteComponent from './Components/DealCompleteComponent.js';
 import Main from './Components/MainComponent';
 import Login from "./Components/LoginComponent";
+import Join from "./Components/JoinComponent";
+import JoinNext from "./Components/JoinNextComponent";
 
 function App() {
   return (
@@ -19,6 +21,8 @@ function App() {
           <Route path='/item/complete/:itemId' element={<DealCompleteComponent/>}></Route>
           <Route path="/" element={<Main />} />
          <Route path="/login" element={<Login />} />
+         <Route path="/join" element={<Join />} />
+         <Route path="/join/joinnext" element={<JoinNext />} />
         </Routes>
       </BrowserRouter>
     </div>

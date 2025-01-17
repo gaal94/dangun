@@ -1,0 +1,86 @@
+.box_container 
+{
+  width: 1080px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(32, 1fr);
+}
+
+.box_item 
+{
+  text-align: center;
+}
+
+.box_join 
+{
+  grid-column: 2 / 3;
+  grid-row: 5 / 28;
+  
+  margin: 0px -60px;
+  
+  text-align: left;
+}
+
+.title
+{
+  font-size: 15px;
+}
+
+.detail_first
+{
+  border: none;
+}
+
+.box_join img
+{
+  cursor: pointer;
+  width: 25px;
+}
+
+.box_item.box_join tr:nth-child(odd) td:nth-child(even) 
+{
+  font-size: 18px;
+  font-weight: 800;
+  padding: 0px 10px;
+}
+
+.box_item.box_join tr:nth-child(even) td:nth-child(even) 
+{   
+  font-size: 15px;
+  font-weight: 500;
+  border: 1px solid lightgray;
+  padding: 10px 10px;
+}
+
+.next_button
+{
+  border: none;
+  border-radius: 10px;  
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #eb3333;
+  padding: 10px 200px;
+  margin: 30px 0px;
+  cursor: pointer;
+}
+
+.join_table
+{
+  text-align: left;
+  margin: 10px;
+}
+
+.join_table tr 
+{
+  display: block;
+  margin-bottom: 10px;
+}
+
+.next_button:disabled 
+{
+  background-color: #A82525;
+  color: white;
+  cursor:unset;
+}

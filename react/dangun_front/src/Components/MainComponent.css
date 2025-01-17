@@ -24,7 +24,7 @@
 	width: 1065px;
 	height:30px;
 	border-radius:5px;
-	z-index: 9999;
+	z-index: 2;
 }
 
 .main_box_suggest
@@ -37,7 +37,7 @@
 	
 	font-size: 14px;
 	font-weight: 800;
-	z-index: 9999;
+	z-index: 2;
 }
 
 .main_box_category_text
