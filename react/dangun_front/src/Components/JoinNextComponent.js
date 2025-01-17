@@ -104,10 +104,10 @@ function Join() {
                                         value={pwCheckText}
                                         onChange={(e) => setPwCheckText(e.target.value)} // Updates passwordCheck state
                                     />
-                                    <button onClick={pwCheckFunc}>비밀번호 확인</button>
                                 </td>
                             </tr>
                         </table>
+                        <button className="btn_pw_check" onClick={pwCheckFunc}>비밀번호 확인</button>
 
                         {/* 이름 */}
                         <table className="join_name">

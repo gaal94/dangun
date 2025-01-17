@@ -83,51 +83,51 @@ const Main = () => {
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_02.jpg`}
-              alt="디지털기기 아이콘 이미지"
+              alt="가전 제품 아이콘 이미지"
             />
-            디지털기기
+            가전 제품
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_03.jpg`}
-              alt="생활가전 아이콘 이미지"
+              alt="의류 아이콘 이미지"
             />
-            생활가전
+            의류
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_04.jpg`}
-              alt="가구/인테리어 아이콘 이미지"
+              alt="뷰티 아이콘 이미지"
             />
-            가구/인테리어
+            뷰티
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_05.jpg`}
-              alt="생활/주방 아이콘 이미지"
+              alt="가구 아이콘 이미지"
             />
-            생활/주방
+            가구
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_06.jpg`}
-              alt="유아동 아이콘 이미지"
+              alt="식품 아이콘 이미지"
             />
-            유아동
+            식품
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_07.jpg`}
-              alt="유아도서 아이콘 이미지"
+              alt="유아제품 아이콘 이미지"
             />
-            유아도서
+            유아제품
           </button>
           <button className="main_category_btn">
             <img
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_08.jpg`}
-              alt="여성의류 아이콘 이미지"
+              alt="기타 중고 제품 아이콘 이미지"
             />
-            여성의류
+            기타 중고 제품
           </button>
         </div>
       </div>
