@@ -2,13 +2,27 @@ import { useState, useEffect } from "react";
 import axios from "axios";
 import {useParams ,useNavigate} from 'react-router-dom';
 import {timeCulFunc} from "../utils/timeUtil";
+import Header from "./HeaderComponent";
+import Footer from "./FooterComponent";
+import "./ItemDetailComponent.css";
 
 const ItemDetailComponent = () => {
 
+  const [userId, setUserId] = useState("");
   const [itemDetail, setItemDetail] = useState({});
   const { item_id } = useParams();
-  const navigate = useNavigate()
-  ;
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    axios.post("http://localhost:9090/auth-check", {}, {withCredentials : true}).then((res) => {
+      if(res.data != "Forbidden Error"){
+        setUserId(res.data);
+      }else{
+        setUserId("");
+      }
+    }).catch((err) => console.log(err));
+  }, []);
+
   useEffect(() => {
     axios.get(
         `http://localhost:9090/item/detail/${item_id}`).then((res)=>{setItemDetail(res.data); console.log(res.data)}).catch((error) => {console.log("ERROR : ", error)});
@@ -37,9 +51,12 @@ const ItemDetailComponent = () => {
 
   return (
       <div>
+        <div className="header">
+          <Header userId={userId}/>
+        </div>
           {
             itemDetail? (
-              <div>
+              <div className="detail_show">
                 <div>카테고리 : {itemDetail.category}</div>
                 {itemDetail.imgSrc? <img src={itemDetail.imgSrc}/> : <img src="/nothing.png"/>}
                 <div>품명 : {itemDetail.title}</div>
@@ -54,6 +71,11 @@ const ItemDetailComponent = () => {
               }</div>
             ) : <div>Loading...</div> /* 데이터가 없으면 로딩 중 메시지 */
           }
+      
+      <div className="footer">
+        <Footer />        
+      </div>
+
       </div>
   )
 }

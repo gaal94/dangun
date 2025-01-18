@@ -1,0 +1,31 @@
+.detail_show
+{
+  text-align: left;
+  font-size: 18px;
+  margin: 1% 30%;
+  padding: 15px;
+}
+
+.detail_show img
+{
+  margin: 0 6%;
+}
+
+.detail_show > div 
+{
+  margin: 7px 0px;
+}
+
+.detail_show button
+{  
+  border: none;
+  border-radius: 10px;  
+  color: white;
+  font-size: 20px;
+  font-weight: 700;
+  background-color: #eb3333;
+  padding: 10px 180px;
+  margin-left: 19%;
+  cursor: pointer;
+  min-width: 440px;
+}
