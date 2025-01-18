@@ -12,7 +12,7 @@
   text-align: center;
 }
 
-.box_join
+.box_join_next 
 {
   grid-column: 2 / 3;
   grid-row: 5 / 32;

@@ -5,6 +5,7 @@ function Footer()
 {
   return (
     <>
+    <div className='footer'>
       <table>
         <tbody>
           <tr>
@@ -54,6 +55,7 @@ function Footer()
           </tr>
         </tbody>
       </table>
+      </div>
     </>
   );
 }

@@ -61,7 +61,7 @@ function Join() {
 
             {/* Main */}
             <div className="box_container">
-                <div className="box_item box_join">
+                <div className="box_item box_join_next">
                     <div className="join">
                         {/* 아이디 */}
                         <table className="join_id">

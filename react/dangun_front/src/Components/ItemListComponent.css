@@ -1,25 +1,18 @@
 .item_list_container 
 {
-    width: 1080px;
+	width: 90%;
     margin: auto;
     display: grid;
     grid-template-rows: 100% 10%;
 } 
-.box_item 
-{
-    text-align: center;
-}
-.box_list
-{
-    /* grid-column: 1 / 4;
-    grid-row: 3 / 4;  */
-  border: 1px solid black;
-}
 
 .box_list table 
 {
-    width: 100%;
+    width: 70%;
     border-collapse: collapse;
+    margin-left: 15%;
+    margin-top: 2%;
+    
 }
 
 .box_list th, .box_list td 

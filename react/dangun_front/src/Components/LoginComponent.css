@@ -1,21 +1,7 @@
-.box_container 
-{
-  width: 1080px;
-  margin: auto;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(32, 1fr);
-}
-
-.box_item 
-{
-  text-align: center;
-}
-
 .box_login 
 {
   grid-column: 2 / 3;
-  grid-row: 7 / 28;
+  grid-row: 8 / 24;
   
   border: 1px solid #dee3eb;
   border-radius: 10px;
@@ -25,7 +11,7 @@
 .box_btns 
 {
   grid-column: 2 / 3;
-  grid-row: 29 / 30;
+  grid-row: 25 / 26;
 }
 
 .login table
@@ -33,14 +19,13 @@
 	border: 1px solid lightgray;
   margin-left: 25px;
   padding: 5px 0px;
-  padding-right: 155px;
 }
 
 .login_id
 {
   border-top-left-radius: 10px;
   border-top-right-radius: 10px;
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .login_pw
@@ -63,6 +48,7 @@ table:focus-within
 	outline: none;
 	font-size: 20px;
 	padding: 10px;
+  padding-right: 160px;
 }
 
 .login_button
@@ -74,7 +60,7 @@ table:focus-within
   font-weight: 700;
   background-color: #eb3333;
   padding: 10px 180px;
-  margin-top: 40px;
+  margin-top: 60px;
   cursor: pointer;
 }
 

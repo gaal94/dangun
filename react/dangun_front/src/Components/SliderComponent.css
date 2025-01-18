@@ -1,21 +1,7 @@
-.box_container 
-{
-	width: 1080px;
-	margin: auto;
-	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(30, 40px);
-}
-
-.box_item 
-{
-	text-align: center;
-}
-
 .box_slider
 {
 	grid-column: 1 / 4;
-	grid-row: 5/ 17;
+	grid-row: 4/ 16;
 	
 	width: 100%;
 	overflow: hidden;

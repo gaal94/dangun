@@ -7,8 +7,18 @@ import "./ItemListComponent.css";
 
 const ItemListComponent = ( ) => {
 
+    const [userId, setUserId] = useState("");
     const [itemList, setItemList] = useState([]);
-
+    
+    useEffect(()=> {
+        axios.post("http://localhost:9090/auth-check", {}, {withCredentials : true}).then((res) => {
+          if(res.data != "Forbidden Error"){
+            setUserId(res.data);
+          }else{
+            setUserId("");
+          }
+        }).catch((err) => console.log(err));
+      }, [])
 
     useEffect(() => {
         axios.get("http://localhost:9090/item/list").then((res)=>{
@@ -21,7 +31,7 @@ const ItemListComponent = ( ) => {
     return (   
         <div>
             <div className="header">
-                <Header />
+                <Header userId={userId} />
             </div >
             <div className="item_list_container">
                 <div className="box_item box_list">
@@ -50,7 +60,7 @@ const ItemListComponent = ( ) => {
                         </table>
                     </div>
                 </div>
-                <div>
+                <div className="footer">
                 <Footer /> 
                 </div>       
             </div>
