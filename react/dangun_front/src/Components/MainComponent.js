@@ -148,6 +148,7 @@ const handleCategoryClick = (category) => {
             value={modalInput}
             onChange={handleModalInputChange}
             placeholder="지역으로 검색"
+            className="search_location"
           />
           <button className="css-button">검색</button>
           </div>

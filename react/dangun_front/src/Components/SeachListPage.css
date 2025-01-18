@@ -38,17 +38,21 @@
         
          .css-button {
             border: none; 
-            background-color: transparent; 
-            font-size: 1.2em;
-            cursor: pointer; 
+            font-size: 15px;
+            cursor: pointer;             
+            border-radius: 5px;  
+            color: white;
+            font-weight: 400;
+            background-color: #eb3333;
+            padding: 5px;
         }
 
-        ul {
+        .alternate-results ul {
             list-style-type: none; 
             padding: 0;
         }
           
-        li {
+        .alternate-results li {
             cursor: pointer; 
             border-bottom: 1px solid #ccc; 
             padding: 10px 5px;
