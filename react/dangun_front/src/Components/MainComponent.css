@@ -1,10 +1,10 @@
-.main_box_container 
-{
-	width: 1080px;
+.main_box_container {
+	width: 90%;
+	max-width: 1200px;
 	margin: auto;
 	display: grid;
-	grid-template-columns: repeat(3, 1fr);
-	grid-template-rows: repeat(24, 40px);
+	grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+	grid-auto-rows: 40px;
 }
 
 .main_box_item 
@@ -38,6 +38,8 @@
 	font-size: 14px;
 	font-weight: 800;
 	z-index: 2;
+
+	white-space: nowrap;
 }
 
 .main_box_category_text
@@ -51,6 +53,7 @@
 	text-align: left !important;
 	font-size: 25px;
 	font-weight: 800;
+	
 }
 
 .main_box_category
@@ -58,11 +61,13 @@
 	grid-column: 1 / 2;
 	grid-row: 19 / 25;
 	
-	
+	align-items: center;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     gap: 15px;
+	
+	width: 1200px;
 }
 
 .main_search_input 
@@ -150,4 +155,61 @@
 .main_category_btn:hover img 
 {
     transform: scale(1.2);
+}
+
+
+.modal {
+	display: none; 
+	position: fixed;
+	z-index: 1111; 
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.4); 
+}
+
+
+.modal-content {
+	background-color: #fefefe;
+	margin: 15% auto;
+	padding: 20px;
+	border: 1px solid #888;
+	width: 80%;
+	max-width: 500px;
+}
+
+
+.close {
+	color: #aaa;
+	float: right;
+	font-size: 28px;
+	font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+	color: black;
+	text-decoration: none;
+	cursor: pointer;
+}
+
+
+
+ .css-button {
+	border: none; 
+	background-color: transparent; 
+	font-size: 1.2em;
+	cursor: pointer; 
+}
+
+ul {
+	list-style-type: none; 
+	padding: 0;
+}
+  
+li {
+	cursor: pointer; 
+	border-bottom: 1px solid #ccc; 
+	padding: 10px 5px;
 }

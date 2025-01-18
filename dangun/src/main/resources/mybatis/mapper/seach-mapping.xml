@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.example.dangun.DAO.SeachMapper">
+	<select id="seachlist" resultType="com.example.dangun.DTO.SeachDTO" parameterType="java.util.Map">
+		select *
+		from(select rownum r, imsi.*
+		from(select * from items 
+		where title like '%' ||  #{keyword} || '%' and country like '%' || #{country} || '%' and category like '%' || #{category} || '%'  order by id desc) imsi)
+		where r between #{start} and #{end}
+	</select>
+	
+	<select id="totalCount" resultType="int" parameterType="java.util.Map">
+		select count(*) from items
+		where title like '%' ||  #{keyword} || '%'  and country like '%' || #{country} || '%' and category like '%' || #{category} || '%'
+	</select>
+	
+	<select id="coun" resultType="com.example.dangun.DTO.SeachDTO" parameterType="String">
+		select DISTINCT country from items where country like '%' ||  #{country} || '%' ORDER BY country
+	</select>
+	
+	<select id="detailList" resultType="com.example.dangun.DTO.SeachDTO" parameterType="int">
+		select * from items where id=#{id}
+	</select>
+</mapper>
