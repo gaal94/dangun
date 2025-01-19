@@ -78,6 +78,9 @@ const SeachBlistPage = ({ searchParams }) => {
       countryName && category? (
         <h3>지역 '{countryName}'과 '{category} 를 검색한 결과입니다.</h3>
       ) : 
+      keyword && category? (
+        <h3>'{category}'의 '{keyword}' 를 검색한 결과입니다.</h3>
+      ) : 
       countryName ? (
         <h3>지역 '{countryName}'로 검색한 결과입니다.</h3>
       ) : 
