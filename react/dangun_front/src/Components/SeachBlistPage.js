@@ -81,7 +81,7 @@ const SeachBlistPage = ({ searchParams }) => {
       <div className="search-results">
         {items.map((item) => (
           <div key={item.id} className="result-card" 
-          onClick={() => navigate(`/detail?id=${item.id}`)}
+          onClick={() => navigate(`/item/detail/${item.id}`)}
           style={{ cursor: "pointer" }}
           >
             <img src={item.img_src} alt="상품 이미지" className="result-image" />

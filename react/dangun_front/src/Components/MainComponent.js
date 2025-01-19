@@ -190,8 +190,6 @@ const handleCategoryClick = (category) => {
         </div>
         
 
-        {showExtras && (
-          <>
             {/* 인기 검색어 */}
             <div className="main_box_item main_box_suggest">
               인기 검색어
@@ -214,6 +212,8 @@ const handleCategoryClick = (category) => {
               <a href="#">레고</a>
             </div>
 
+        {showExtras && (
+          <>
             {/* 슬라이더 */}
             <div className="main_box_item ">
               <Slider />
@@ -221,7 +221,9 @@ const handleCategoryClick = (category) => {
 
             {/* 인기 카테고리 */}
             <div className="main_box_item main_box_category_text">인기 카테고리</div>
-            <div className="main_box_item main_box_category">
+                </>
+              )}
+            <div className={`main_box_item main_box_category ${!showExtras ? 'showExtrasClass' : ''}`}>
               <button className="main_category_btn" onClick={() => handleCategoryClick("가전 제품")}>
                 <img
                   src={`${process.env.PUBLIC_URL}/images/02_icon/icon_02.jpg`}
@@ -272,15 +274,15 @@ const handleCategoryClick = (category) => {
                 기타 중고 제품
               </button>
             </div>
-          </>
-        )}
         
         
       </div>
           {searchParams !== undefined && (
-          <>
+          <div
+          className={`seach-blist-container ${!showExtras ? 'showExtrasClass' : ''}`}
+        >
             <SeachBlistPage searchParams={searchParams || "" } />
-          </>
+          </div>
           )}
       
         

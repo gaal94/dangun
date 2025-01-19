@@ -12,7 +12,6 @@ import JoinNext from "./Components/JoinNextComponent";
 import ItemWriteComponent from './Components/ItemWriteCompoenet.js';
 import SeachBlistPage from './Components/SeachBlistPage';
 import SeachListPage from './Components/SeachListPage';
-import DetailSeachPage from "./Components/DetailSeachPage";
 
 import ListViewComponent from"./Components/ListViewComponent";
 function App() {
@@ -32,7 +31,7 @@ function App() {
          <Route path="/my/list" element={<ListViewComponent />} />
          <Route path="/SeachBlistPage" element={<SeachBlistPage />} />
          <Route path="/SeachListPage" element={<SeachListPage />} />
-         <Route path="/detail" element={<DetailSeachPage />} />
+
         </Routes>
       </BrowserRouter>
     </div>
