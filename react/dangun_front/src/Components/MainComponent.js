@@ -102,15 +102,17 @@ const Main = () => {
     updatedParams.set("country", countryName);
     setQueryParams(updatedParams.toString()); // country 업데이트
     setModalInput(countryName); // 모달 입력값 반영
+    alert(`${countryName}이(가) 선택되었습니다.`);
     closeModal();
 };
 
 const handleCategoryClick = (category) => {
   const params = new URLSearchParams(queryParams);
   params.set("category", category); 
-  params.delete("keyword"); 
-  params.delete("country"); 
+  //params.delete("keyword"); 
+  //params.delete("country"); 
   setQueryParams(params.toString());
+  navigate(`?${params.toString()}`);
   setSearchParams(params.toString());
 
   // URL 동기화
@@ -137,6 +139,7 @@ const handleCategoryClick = (category) => {
               src={`${process.env.PUBLIC_URL}/images/02_icon/icon_11.jpg`}
               alt="지역 아이콘"
             />
+            <span>지역검색</span>
           </button>
 
         <Modal isOpen={isModalOpen} onClose={closeModal}>

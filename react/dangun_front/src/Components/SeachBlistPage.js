@@ -15,6 +15,8 @@ const SeachBlistPage = ({ searchParams }) => {
   const currentPage = parseInt(queryParams.get('pagenum') || "1", 10);
   const category = queryParams.get('category')
 
+ 
+
   useEffect(() => {
     const fetchItems = async () => {
       try {
@@ -22,6 +24,8 @@ const SeachBlistPage = ({ searchParams }) => {
         //   `http://localhost:9090/search?${searchParams}&pagenum=${currentPage}`
         // );
       const params = searchParams ? `${searchParams}&pagenum=${currentPage}` : `pagenum=${currentPage}`;
+      
+      
       const response = await axios.get(`http://localhost:9090/search?${params}`);
         setItems(response.data.searchList);
         setTotal(response.data.total);
@@ -64,18 +68,29 @@ const SeachBlistPage = ({ searchParams }) => {
 
   return (
     <div className="blist-page">
-      
-      {countryName && keyword && category ? (
+      {
+      countryName && keyword && category? (
+        <h3>지역 '{countryName}'과 '{category}'의 '{keyword}' 를 검색한 결과입니다.</h3>
+      ) : 
+      countryName && keyword ? (
         <h3>지역 '{countryName}'로 '{keyword}' 를 검색한 결과입니다.</h3>
-      ) : countryName ? (
+      ) : 
+      countryName && category? (
+        <h3>지역 '{countryName}'과 '{category} 를 검색한 결과입니다.</h3>
+      ) : 
+      countryName ? (
         <h3>지역 '{countryName}'로 검색한 결과입니다.</h3>
-      ) : keyword ? (
+      ) : 
+      keyword ? (
         <h3>키워드 '{keyword}'로 검색한 결과입니다.</h3>
-      ) : category ? (
+      ) : 
+      category ? (
         <h3>카테고리 '{category}'로 검색한 결과입니다.</h3>
-      ) : (
-        <h3>검색 조건이 없습니다.</h3>
-      )}
+      ) : 
+      (
+        <h3>전체 검색 결과입니다.</h3>
+      )
+      }
         <h2>총 {total}건의 검색 결과가 있습니다.</h2>
       
       <div className="search-results">
