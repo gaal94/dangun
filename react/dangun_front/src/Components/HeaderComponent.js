@@ -2,18 +2,22 @@ import React, { useEffect, useState } from 'react';
 import './HeaderComponent.css';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
-
+import { useNavigate } from 'react-router-dom';
 
 const Header = (props) =>{
-
+  const navigate = useNavigate();
   const [userId, setUserId] = useState("");
   useEffect(()=> {setUserId(props.userId);}, [props.userId]);
   
+  
   const logout = async () => {
-    const response = await axios.get("http://localhost:9090/logout", {}, {withCredentials : true});
-    console.log(response);
-    setUserId("");
+    const response = await axios.get("http://localhost:9090/logout", {withCredentials : true});
+    setUserId(response.data);
     document.cookie = "JSESSIONID=; path=/; expires=Thu, 01 Jan 1970 00:00:00 GMT; domain=localhost";
+  }
+
+  const mylistFunc = () => {
+    navigate("/my/list");
   }
 
   return (
@@ -62,10 +66,11 @@ const Header = (props) =>{
             <div>
               <div className="headermenu">{userId}님 환영합니다.</div>
               <button className="headermenu" onClick={logout}>로그아웃</button>
-              <Link to="/item/write" className="itemwrite" state={{userId: userId}}>물품 등록</Link>
+              <button className="headermenu" onClick={mylistFunc}>내 물건 보기</button>
+              <button><Link to="/item/write" className="itemwrite" state={{userId: userId}}>물품 등록</Link></button>
             </div>
             ):(
-            <div className="headermenu">
+              <div className="headermenu headermenu-container">
               <div
                 className="usermenu"
                 id="usermenu_first"

@@ -28,7 +28,7 @@ const ChatRoomComponent = () => {
       if(data.TYPE == TYPE.MSG){
         setMessages((prev) => [...prev, {SENDER: data.SENDER, MSG : data.MSG, TIMESTAMP : data.TIMESTAMP}]);
       }else if(data.TYPE == TYPE.END){
-        if(window.confirm("거래 완료 요청이 들어왔습니다.")){
+        //if(window.confirm("거래 완료 요청이 들어왔습니다.")){
           // 거래 성사 API 호출
           const response = await axios.post("http://localhost:9090/item/deal-over",{id: itemId}, { withCredentials: true });
           if(response.status == 200){
@@ -36,9 +36,9 @@ const ChatRoomComponent = () => {
           }
           navigate(`/item/complete/${itemId}`);
           // 별점 요청 페이지로 redirect
-        }else{
-          alert("거래가 계속됩니다.");
-        }
+        //}else{
+        //  alert("거래가 계속됩니다.");
+        //}
       }
     };
 
@@ -86,11 +86,11 @@ const ChatRoomComponent = () => {
 
   return (
     <div>
-      <h1>WebSocket Chat {isConnected ? "🟢" : "🔴"}</h1>
-      <div>
+      <h1>🍅 토마토 채팅 🍅</h1>
+      <div style={{textAlign : "center"}}>
         {messages.map((msg, index) => (
           <div key={index}>
-            <strong>[{msg.SENDER}]</strong> "{msg.MSG}"   <small>{msg.TIMESTAMP}</small>
+            <strong> 🍅 [{msg.SENDER}]</strong> "{msg.MSG}"   <small>{msg.TIMESTAMP}</small>
           </div>
         ))}
       </div>

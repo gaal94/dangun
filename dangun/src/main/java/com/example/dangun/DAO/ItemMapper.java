@@ -25,5 +25,8 @@ public interface ItemMapper {
 	ArrayList<String> getAllCategory();
 
 	ArrayList<ItemDTO> getAllMyItems(int userId);
-
+	
+	void insertItemSale(ItemDTO dto);
+	
+	int itemCount();
 }

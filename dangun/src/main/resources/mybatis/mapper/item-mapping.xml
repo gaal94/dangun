@@ -53,7 +53,7 @@
 	insert into items
 	(id, user_pk, title, price, country, contents, category, img_src)
 	values(
-		(select max(id) + 1 from items),
+		#{id},
 		#{userPk},
 		#{title},
 		#{price},
@@ -63,6 +63,16 @@
 		#{imgSrc}
 	)
 </insert>
+
+<select id="itemCount" resultType="int">
+	select max(id) + 1 from items
+</select>
+
+<insert id="insertItemSale" parameterType="ItemDTO">
+	INSERT INTO ITEM_SALE(ITEM_ID, USER_PK, IS_SALE, STAR)
+	VALUES(#{id}, #{userPk}, 0, 3)
+</insert>
+
 
 <select id="getAllCategory" resultType="String">
 	select category from items group by category

@@ -68,6 +68,7 @@ public class ItemController {
     
     @PostMapping("/item/evaluate")
     public ResponseEntity evaluateDeal(HttpServletRequest request, @RequestBody ItemSaleDTO dto) {
+    	System.out.println(dto.getId());
     	HttpSession session = request.getSession();
     	Integer userId = (Integer) session.getAttribute("user");
 	    if (userId == null) {

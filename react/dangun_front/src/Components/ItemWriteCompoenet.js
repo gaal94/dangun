@@ -2,7 +2,7 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import Header from "./HeaderComponent";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const Title = styled.div`
   font-size: 12px;
@@ -52,6 +52,8 @@ function ItemWriteComponent() {
   const fileInput = React.useRef(null);
   const location = useLocation();
   const userId = location.state.userId;
+  const navigate = useNavigate();
+
 
   const writeItems = function() {
     if(img_src === '') {
@@ -83,6 +85,7 @@ function ItemWriteComponent() {
         data: formData,
       });
       alert("등록을 완료했습니다.");
+      navigate("/");
     }
   };
 

@@ -18,7 +18,7 @@ const DealCompleteComponent = () => {
         },{ withCredentials: true });
         if(response.status == 200){
             alert("평가해주셔서 감사합니다.");
-            navigate("/item/list");
+            navigate("/");
         }
     }
 

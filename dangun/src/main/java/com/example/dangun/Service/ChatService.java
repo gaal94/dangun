@@ -29,8 +29,6 @@ public class ChatService {
 		String currentRoomId = chatMapper.getRoomById((int)dto.getSellerId(), userId);
 		// 있으면 룸번호 리턴
 		if(currentRoomId != null) return currentRoomId;
-		currentRoomId= chatMapper.getRoomById(userId, (int)dto.getSellerId());
-		if(currentRoomId != null) return currentRoomId;
 		// 없으면 새로 만들기
 		String randomId = UUID.randomUUID().toString();
 		ChatRoomDTO chatRoom = new ChatRoomDTO(randomId, dto.getSellerId(), userId, dto.getItemId());
