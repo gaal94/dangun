@@ -79,4 +79,10 @@ public class UserController {
 		UserDTO user = userService.getUserById(userId);
 		return ResponseEntity.ok().body(user);
 	}
+	
+	@GetMapping("/get-id/{userId}")
+	public ResponseEntity getId(@PathVariable("userId") String userId) {
+		int id = userService.getByUserId(userId);
+		return ResponseEntity.ok().body(id);
+	}
 }

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import './HeaderComponent.css';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 const Header = (props) =>{
@@ -61,6 +62,7 @@ const Header = (props) =>{
             <div>
               <div className="headermenu">{userId}님 환영합니다.</div>
               <button className="headermenu" onClick={logout}>로그아웃</button>
+              <Link to="/item/write" className="itemwrite" state={{userId: userId}}>물품 등록</Link>
             </div>
             ):(
             <div className="headermenu">

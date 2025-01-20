@@ -1,19 +1,19 @@
 package com.example.dangun.DTO;
 
 public class SeachDTO {
-	String title, user_pk, country,category,img_src;
-	int id, price;
+	String title, country,category, imgSrc;
+	int userPk, id, price;
 	public String getTitle() {
 		return title;
 	}
 	public void setTitle(String title) {
 		this.title = title;
 	}
-	public String getUser_pk() {
-		return user_pk;
+	public int getUserPk() {
+		return userPk;
 	}
-	public void setUser_pk(String user_pk) {
-		this.user_pk = user_pk;
+	public void setUserPk(int userPk) {
+		this.userPk = userPk;
 	}
 	public String getCountry() {
 		return country;
@@ -27,11 +27,11 @@ public class SeachDTO {
 	public void setCategory(String category) {
 		this.category = category;
 	}
-	public String getImg_src() {
-		return img_src;
+	public String getImgSrc() {
+		return imgSrc;
 	}
-	public void setImg_src(String img_src) {
-		this.img_src = img_src;
+	public void setImgSrc(String imgSrc) {
+		this.imgSrc = imgSrc;
 	}
 	public int getId() {
 		return id;

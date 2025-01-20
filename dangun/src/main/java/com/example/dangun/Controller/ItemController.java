@@ -82,14 +82,17 @@ public class ItemController {
     //중고 물품 등록 기능(아직 유저 정보랑은 연결 안됨)
     @PostMapping("/item/write")
     @ResponseBody
-    public void insertItem(String title, int price, String country, String contents, String category, String img_src, MultipartFile multifile) throws IOException {
+    public void insertItem(String title, int user_pk, int price, String country, String contents, String category, String img_src, MultipartFile multifile) throws IOException {
     	ItemDTO dto = new ItemDTO();
 		dto.setTitle(title);
 		dto.setPrice(price);
 		dto.setCountry(country);
 		dto.setContents(contents);
 		dto.setCategory(category);
-		String savePath = "c:/ezwel/upload/";
+		dto.setUserPk(user_pk);
+		String savePath = "c:/ezwel/dangun/react/dangun_front/public/images/04_upload/";
+		//물품 등록 시 이미지 파일 업로드 경로
+	 	//react의 public/upload가 경로가 되도록 설정하기
 		String newfilename = null;
 		if(!multifile.isEmpty()) {
 			String originalfilename = multifile.getOriginalFilename();

@@ -58,7 +58,7 @@ const ItemDetailComponent = () => {
             itemDetail? (
               <div className="detail_show">
                 <div>카테고리 : {itemDetail.category}</div>
-                {itemDetail.imgSrc? <img src={itemDetail.imgSrc}/> : <img src="/nothing.png"/>}
+                {itemDetail.imgSrc? <img src={`/images/04_upload/${itemDetail.imgSrc}`}/> : <img src="/nothing.png"/>}
                 <div>품명 : {itemDetail.title}</div>
                 <div>판매자 : {itemDetail.userName}</div>
                 <div>희망 판매 가격 : {itemDetail.price}</div>

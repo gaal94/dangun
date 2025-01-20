@@ -102,13 +102,13 @@ const SeachBlistPage = ({ searchParams }) => {
           onClick={() => navigate(`/item/detail/${item.id}`)}
           style={{ cursor: "pointer" }}
           >
-            <img src={item.img_src} alt="상품 이미지" className="result-image" />
+            <img src={`/images/04_upload/${item.imgSrc}`} alt="상품 이미지" className="result-image" />
             <div className="result-info">
               <h3 className="result-title">{item.title}</h3>
               <p className="result-price">{item.price.toLocaleString()} 원</p>
               <p className="result-category">카테고리: {item.category}</p>
               <p className="result-location">지역: {item.country}</p>
-              <p className="result-seller">판매자: {item.user_pk}</p>
+              <p className="result-seller">판매자: {item.userPk}</p>
             </div>
           </div>
         ))}

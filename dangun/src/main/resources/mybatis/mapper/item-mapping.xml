@@ -51,9 +51,10 @@
 
 <insert id="insertItem" parameterType="ItemDTO">
 	insert into items
-	(id, title, price, country, contents, category, img_src)
+	(id, user_pk, title, price, country, contents, category, img_src)
 	values(
 		(select max(id) + 1 from items),
+		#{userPk},
 		#{title},
 		#{price},
 		#{country},

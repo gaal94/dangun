@@ -1,6 +1,8 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
+import Header from "./HeaderComponent";
+import { useLocation } from "react-router-dom";
 
 const Title = styled.div`
   font-size: 12px;
@@ -46,7 +48,10 @@ function ItemWriteComponent() {
   const [selectedFiles, setSelectedFiles] = useState(0);
   const [categories, setCategories] = useState('');
   const [imgPreview, setImgPreview] = useState('');
+  const [user_pk, setUser_pk] = useState('');
   const fileInput = React.useRef(null);
+  const location = useLocation();
+  const userId = location.state.userId;
 
   const writeItems = function() {
     if(img_src === '') {
@@ -71,6 +76,7 @@ function ItemWriteComponent() {
       formData.append('contents', contents);
       formData.append('category', category);
       formData.append('multifile', multifile);
+      formData.append('user_pk', user_pk);
       axios({
         url: 'http://localhost:9090/item/write',
         method: 'post',
@@ -112,49 +118,59 @@ function ItemWriteComponent() {
 
   useEffect(() => {
     loadCategories();
+    axios.get(`http://localhost:9090/get-id/${userId}`).then((res) => {
+      setUser_pk(res.data);
+    });
   }, [])
 
-  return <div style={{width:"416px"}}>
-    <h1>내 물건 팔기</h1>
-    <form>
-      <input type="file" value={img_src} onChange={fileChange} ref={fileInput} accept="image/*" style={{display:"none"}}/>
-      <div style={{display:"flex"}}>
-        <div style={{width:"50px", height:"50px", border:"1px solid black", borderRadius:"7px", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", marginBottom:"12px", cursor:"pointer", marginRight:"10px"}} onClick={fileSelect}>
-          <div style={{fontSize:"20px", userSelect:"none"}}>📷</div>
-          <div style={{fontSize:"12px", userSelect:"none"}}>{selectedFiles}/1</div>
-        </div>
-        <img src={imgPreview? imgPreview : "https://placehold.co/50x50"} style={{width:"50px", height:"50px", objectFit:"cover", paddingTop:"1px", userSelect:"none"}} alt="선택한 이미지" />
+  return <>
+    <div className="header">
+      <Header userId={userId} />
+    </div>
+    <div style={{width:"100%", display:"flex", justifyContent:"center"}}>
+      <div style={{width:"416px"}}>
+        <h1>내 물품 등록</h1>
+        <form>
+          <input type="file" value={img_src} onChange={fileChange} ref={fileInput} accept="image/*" style={{display:"none"}}/>
+          <div style={{display:"flex"}}>
+            <div style={{width:"50px", height:"50px", border:"1px solid black", borderRadius:"7px", display:"flex", justifyContent:"center", alignItems:"center", flexDirection:"column", marginBottom:"12px", cursor:"pointer", marginRight:"10px"}} onClick={fileSelect}>
+              <div style={{fontSize:"20px", userSelect:"none"}}>📷</div>
+              <div style={{fontSize:"12px", userSelect:"none"}}>{selectedFiles}/1</div>
+            </div>
+            <img src={imgPreview? imgPreview : "https://placehold.co/50x50"} style={{width:"50px", height:"50px", objectFit:"cover", paddingTop:"1px", userSelect:"none"}} alt="선택한 이미지" />
+          </div>
+          <Title>제목</Title>
+          <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} style={{border:"1px solid black", borderRadius:"3px", width:"400px", height:"30px", fontWeight:"bold", padding:"0 7px", marginTop:"10px"}} placeholder="제목" /><br />
+          <div style={{width:"416px", display:"flex", flexFlow:"wrap", marginTop:"10px", marginBottom:"20px"}}>
+            {
+              categories === '' ? null:
+              categories.map((item, idx) => {
+                return <Category key={`category${idx}`} onClick={e => {setCategory(e.target.innerText); setClickedCategoryIndex(`${idx}`);}} fontWeight={clickedCategoryIndex === `${idx}` && "bold"} backgroundColor={clickedCategoryIndex === `${idx}` && "#cfd3de"}>{item}</Category>;
+              })
+            }
+          </div>
+          <Title>거래방식</Title>
+          <div style={{display:"flex", marginTop:"10px"}}>
+            <Category onClick={e => setTransactionMethod(0)} fontWeight={transactionMethod === 0 && "bold"} backgroundColor={transactionMethod === 0 && "#cfd3de"}>판매하기</Category>
+            <Category onClick={e => setTransactionMethod(1)} fontWeight={transactionMethod === 1 && "bold"} backgroundColor={transactionMethod === 1 && "#cfd3de"}>나눔하기</Category>
+          </div>
+          <PriceInput type="number" placeholder="₩ 가격을 입력해 주세요." value={price} onChange={(e) => setPrice(e.target.value)}/><br />
+          <div style={{display:"flex", alignItems:"center", marginTop:"5px", marginBottom:"20px"}}>
+            <input type="checkbox" style={{width:"18px", height:"18px", accentColor:"#ff6f0f"}}/>
+            <div style={{fontSize:"14px", fontWeight:"bold"}}>가격 제안 받기</div>
+          </div>
+          <Title>자세한 설명</Title>
+          <textarea rows="7" cols="50" value={contents} style={{width:"400px", padding:"7px 7px", fontWeight:"bold", resize:"none", border:"1px solid black", borderRadius:"3px", marginTop:"10px"}} onChange={(e) => setContents(e.target.value)} /><br />
+          <div style={{fontSize:"13px", cursor:"pointer", userSelect:"none", width:"100px", height:"30px", lineHeight:"30px", textAlign:"center", fontWeight:"bold", border:"1px solid black", borderRadius:"5px", marginBottom:"20px"}}>자주 쓰는 문구</div>
+          <Title>거래 희망 장소</Title>
+          <input type="text" style={{border:"1px solid black", borderRadius:"3px", width:"400px", height:"30px", fontWeight:"bold", padding:"0 7px", marginTop:"10px", marginBottom:"20px"}} placeholder="ex) 인천 미추홀구" value={country} onChange={(e) => setCountry(e.target.value)} /><br />
+          {/* <label htmlFor="writer">작성자</label>
+          <input type="text" value={writer} onChange={(e) => setWriter(e.target.value)} /><br /> */}
+        </form>
+        <button onClick={writeItems} style={{width:"416px", height:"35px", backgroundColor:"#ff6f0f", color:"white", fontSize:"15px", fontWeight:"bold", border:"none", borderRadius:"7px", cursor:"pointer"}}>작성 완료</button>
       </div>
-      <Title>제목</Title>
-      <input type="text" value={title} onChange={(e) => setTitle(e.target.value)} style={{border:"1px solid black", borderRadius:"3px", width:"400px", height:"30px", fontWeight:"bold", padding:"0 7px", marginTop:"10px"}} placeholder="제목" /><br />
-      <div style={{width:"416px", display:"flex", flexFlow:"wrap", marginTop:"10px", marginBottom:"20px"}}>
-        {
-          categories === '' ? null:
-          categories.map((item, idx) => {
-            return <Category key={`category${idx}`} onClick={e => {setCategory(e.target.innerText); setClickedCategoryIndex(`${idx}`);}} fontWeight={clickedCategoryIndex === `${idx}` && "bold"} backgroundColor={clickedCategoryIndex === `${idx}` && "#cfd3de"}>{item}</Category>;
-          })
-        }
-      </div>
-      <Title>거래방식</Title>
-      <div style={{display:"flex", marginTop:"10px"}}>
-        <Category onClick={e => setTransactionMethod(0)} fontWeight={transactionMethod === 0 && "bold"} backgroundColor={transactionMethod === 0 && "#cfd3de"}>판매하기</Category>
-        <Category onClick={e => setTransactionMethod(1)} fontWeight={transactionMethod === 1 && "bold"} backgroundColor={transactionMethod === 1 && "#cfd3de"}>나눔하기</Category>
-      </div>
-      <PriceInput type="number" placeholder="₩ 가격을 입력해 주세요." value={price} onChange={(e) => setPrice(e.target.value)}/><br />
-      <div style={{display:"flex", alignItems:"center", marginTop:"5px", marginBottom:"20px"}}>
-        <input type="checkbox" style={{width:"18px", height:"18px", accentColor:"#ff6f0f"}}/>
-        <div style={{fontSize:"14px", fontWeight:"bold"}}>가격 제안 받기</div>
-      </div>
-      <Title>자세한 설명</Title>
-      <textarea rows="7" cols="50" value={contents} style={{width:"400px", padding:"7px 7px", fontWeight:"bold", resize:"none", border:"1px solid black", borderRadius:"3px", marginTop:"10px"}} onChange={(e) => setContents(e.target.value)} /><br />
-      <div style={{fontSize:"13px", cursor:"pointer", userSelect:"none", width:"100px", height:"30px", lineHeight:"30px", textAlign:"center", fontWeight:"bold", border:"1px solid black", borderRadius:"5px", marginBottom:"20px"}}>자주 쓰는 문구</div>
-      <Title>거래 희망 장소</Title>
-      <input type="text" style={{border:"1px solid black", borderRadius:"3px", width:"400px", height:"30px", fontWeight:"bold", padding:"0 7px", marginTop:"10px", marginBottom:"20px"}} placeholder="ex) 인천 미추홀구" value={country} onChange={(e) => setCountry(e.target.value)} /><br />
-      {/* <label htmlFor="writer">작성자</label>
-      <input type="text" value={writer} onChange={(e) => setWriter(e.target.value)} /><br /> */}
-    </form>
-    <button onClick={writeItems} style={{width:"416px", height:"35px", backgroundColor:"#ff6f0f", color:"white", fontSize:"15px", fontWeight:"bold", border:"none", borderRadius:"7px", cursor:"pointer"}}>작성 완료</button>
-  </div>;
+    </div>
+  </>;
 }
 
 export default ItemWriteComponent;

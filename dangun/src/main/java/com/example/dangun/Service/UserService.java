@@ -46,4 +46,8 @@ public class UserService {
 			return null;
 		}
 	}
+	
+	public int getByUserId(String user_id) {
+		return userMapper.getByUserId(user_id).getId();
+	}
 }
